@@ -116,14 +116,6 @@ public class SolutionIT {
             }
         });
         assertTrue(result);
-
-
-        // TODO: implement this method
-        // - use assertTitleEquals() as an example pattern to follow
-        // - but instead of return driver.getTitle().equals(expectedTitle)
-        //   call driver.findElement() with the selector provided
-        //   and then get the text from that element
-        //   and then check that it equals the expected text
     }
 
     // ========= SCAFFOLDING =========
@@ -159,13 +151,15 @@ public class SolutionIT {
     @Test
     public void notLoggedIn_checkMenus() {
         assertElementPresent(logInMenuId);
+        assertElementPresent(aboutMenuId);
         assertElementNotPresent(logOutMenuId);
-        // TODO: complete for all other menus
+        assertElementNotPresent(myWhipbirdsMenuId);
     }
 
     // Step 2
     @Test
     public void notLoggedIn_checkCurrentPage() {
+      
         // TODO
     }
 

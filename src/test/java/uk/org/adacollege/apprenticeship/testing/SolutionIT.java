@@ -159,8 +159,10 @@ public class SolutionIT {
     // Step 2
     @Test
     public void notLoggedIn_checkCurrentPage() {
-      
-        // TODO
+        assertUrlEquals("http://whipbird.mattcalthrop.com/");
+        assertTitleEquals("whipbird:login");
+        assertElementTextEquals(By.tagName("h4"), ("Log in"));
+        assertElementTextEquals(By.id("footer-right"), (""));
     }
 
     // Step 3

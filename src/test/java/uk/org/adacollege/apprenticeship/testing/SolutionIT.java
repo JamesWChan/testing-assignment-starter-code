@@ -159,8 +159,8 @@ public class SolutionIT {
     // Step 2
     @Test
     public void notLoggedIn_checkCurrentPage() {
-        assertUrlEquals("http://whipbird.mattcalthrop.com/");
-        assertTitleEquals("whipbird:login");
+        assertUrlEquals("http://whipbird.mattcalthrop.com/#!/login");
+        assertTitleEquals("whipbird: log in");
         assertElementTextEquals(By.tagName("h4"), ("Log in"));
         assertElementTextEquals(By.id("footer-right"), (""));
     }
@@ -168,7 +168,8 @@ public class SolutionIT {
     // Step 3
     @Test
     public void notLoggedIn_clickAboutMenu() {
-        driver.findElement(By.id("about-menu")).click();
+        wait.until(presenceOfElementLocated(By.id(aboutMenuId)));
+        driver.findElement(By.id(aboutMenuId)).click();
         assertUrlEquals("http://whipbird.mattcalthrop.com/#!/about");
         assertTitleEquals("whipbird: about");
         assertElementTextEquals(By.tagName("h4"), ("About this app"));
@@ -185,7 +186,7 @@ public class SolutionIT {
         assertElementNotPresent(myWhipbirdsMenuId);
         assertUrlEquals("http://whipbird.mattcalthrop.com/#!/login");
         assertTitleEquals("whipbird: log in");
-        assertElementTextEquals(By.id("popup-message"), ("Username or password incorrect"));
+        assertElementTextEquals(By.id(popupMessageId), ("Username or password incorrect"));
         assertElementTextEquals(By.id("footer-right"), (""));
 
     }

@@ -16,19 +16,19 @@ public class SolutionIT {
     private static WebDriver driver;
     private static WebDriverWait wait;
     private static String startUrl;
-    private static String myWhipbirdsMenuId = "TODO";
-    private static String aboutMenuId = "TODO";
-    private static String logOutMenuId = "TODO";
-    private static String logInMenuId = "TODO";
-    private static String emailInputId = "TODO";
-    private static String passwordInputId = "TODO";
-    private static String validEmail = "TODO";
+    private static String myWhipbirdsMenuId = "my-whipbirds-menu";
+    private static String aboutMenuId = "about-menu";
+    private static String logOutMenuId = "log-out-menu";
+    private static String logInMenuId = "log-in-menu";
+    private static String emailInputId = "email";
+    private static String passwordInputId = "password";
+    private static String validEmail = "james.chan@adacollege.org.uk";
     private static String invalidEmail = validEmail + ".nothing";
-    private static String validPassword = "TODO";
+    private static String validPassword = "whipit";
     private static String invalidPassword = validPassword + "-invalid";
-    private static String logInButtonId = "TODO";
-    private static String logOutButtonId = "TODO";
-    private static String popupMessageId = "TODO";
+    private static String logInButtonId = "login-button";
+    private static String logOutButtonId = "log-out-button";
+    private static String popupMessageId = "popup-message";
 
     // ========= UTILITY METHODS =========
 

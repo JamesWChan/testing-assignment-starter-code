@@ -207,7 +207,12 @@ public class SolutionIT {
     // Step 6
     @Test
     public void loggedIn_checkCurrentPage() {
-        // TODO
+        logIn(true);
+        assertUrlEquals("http://whipbird.mattcalthrop.com/#!/my-whipbirds");
+        assertTitleEquals("whipbird: my whipbirds");
+        assertElementTextEquals(By.tagName("h4"), ("Current whipbirds for James Chan"));
+        assertElementTextEquals(By.id("footer-right"), ("James Chan"));
+
     }
 
     // Step 7

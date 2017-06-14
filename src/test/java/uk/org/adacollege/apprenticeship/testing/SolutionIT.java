@@ -100,12 +100,24 @@ public class SolutionIT {
     }
 
     private static void assertUrlEquals(String expectedUrl) {
-        // TODO: implement this method
-        // - use assertTitleEquals() as an example pattern to follow
-        // - search the web for how to find the current URL with Selenium
+        Boolean result = wait.until(new ExpectedCondition<Boolean>() {
+            public Boolean apply(WebDriver driver) {
+                return driver.getCurrentUrl().equals(expectedUrl);
+            }
+        });
+        assertTrue(result);
+
     }
 
     private static void assertElementTextEquals(By selector, String expectedText) {
+        Boolean result = wait.until(new ExpectedCondition<Boolean>() {
+            public Boolean apply(WebDriver driver) {
+                return driver.findElement(selector).getText().equals(expectedText);
+            }
+        });
+        assertTrue(result);
+
+
         // TODO: implement this method
         // - use assertTitleEquals() as an example pattern to follow
         // - but instead of return driver.getTitle().equals(expectedTitle)

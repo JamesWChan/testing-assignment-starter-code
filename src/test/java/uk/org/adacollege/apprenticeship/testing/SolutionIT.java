@@ -231,7 +231,20 @@ public class SolutionIT {
     // Step 8
     @Test
     public void loggedIn_addNewWhipbird() {
-        // TODO
+        logIn(true);
+
+        wait.until(presenceOfElementLocated(By.id("name")));
+        driver.findElement(By.id("name")).sendKeys("Jenkins");
+
+        wait.until(presenceOfElementLocated(By.id("age")));
+        driver.findElement(By.id("age")).sendKeys("23");
+
+        wait.until(presenceOfElementLocated(By.id("add-new-whipbird-button")));
+        driver.findElement(By.id("add-new-whipbird-button")).click();
+
+        assertElementTextEquals(By.id("global-snackbar"), ("Whipbird added: Jenkins"));
+        assertElementTextEquals(By.id("whipbird-name-2"), ("Jenkins"));
+        assertElementTextEquals(By.id("whipbird-age-2"), ("23"));
     }
 
     // Step 9

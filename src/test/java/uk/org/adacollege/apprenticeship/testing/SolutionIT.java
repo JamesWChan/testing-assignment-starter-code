@@ -253,7 +253,7 @@ public class SolutionIT {
         wait.until(presenceOfElementLocated(By.id("add-new-whipbird-button")));
         driver.findElement(By.id("add-new-whipbird-button")).click();
 
-        assertElementTextEquals(By.id("global-snackbar"), ("Whipbird added: Jenkins"));
+        assertElementTextEquals(By.id(popupMessageId), ("Whipbird added: Jenkins"));
         assertElementTextEquals(By.id("whipbird-name-0"), ("Jenkins"));
         assertElementTextEquals(By.id("whipbird-age-0"), ("23"));
     }
@@ -262,7 +262,29 @@ public class SolutionIT {
     @Test
     public void loggedIn_addNewWhipbirdThenDeleteIt() {
 
-        
+        logIn(true);
 
+        deleteAllBirds();
+
+        wait.until(presenceOfElementLocated(By.id("name")));
+        driver.findElement(By.id("name")).sendKeys("Jenkins");
+
+        wait.until(presenceOfElementLocated(By.id("age")));
+        driver.findElement(By.id("age")).sendKeys("23");
+
+        wait.until(presenceOfElementLocated(By.id("add-new-whipbird-button")));
+        driver.findElement(By.id("add-new-whipbird-button")).click();
+
+        assertElementTextEquals(By.id(popupMessageId), ("Whipbird added: Jenkins"));
+        assertElementTextEquals(By.id("whipbird-name-0"), ("Jenkins"));
+        assertElementTextEquals(By.id("whipbird-age-0"), ("23"));
+
+        wait.until(presenceOfElementLocated(By.id("delete-whipbird-button-0")));
+        driver.findElement(By.id("delete-whipbird-button-0")).click();
+
+        wait.until(presenceOfElementLocated(By.id(popupMessageId)));
+        assertElementTextEquals(By.id(popupMessageId), "Whipbird deleted: Jenkins");
+
+        assertElementNotPresent("whipbird-name-0");
     }
 }

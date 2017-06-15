@@ -170,16 +170,17 @@ public class SolutionIT {
     public void notLoggedIn_clickAboutMenu() {
         wait.until(presenceOfElementLocated(By.id(aboutMenuId)));
         driver.findElement(By.id(aboutMenuId)).click();
+
         assertUrlEquals("http://whipbird.mattcalthrop.com/#!/about");
         assertTitleEquals("whipbird: about");
         assertElementTextEquals(By.tagName("h4"), ("About this app"));
-
     }
 
     // Step 4
     @Test
     public void notLoggedIn_logInWithIncorrectCredentials() {
         logIn(false);
+
         assertElementPresent(logInMenuId);
         assertElementPresent(aboutMenuId);
         assertElementNotPresent(logOutMenuId);
@@ -188,7 +189,6 @@ public class SolutionIT {
         assertTitleEquals("whipbird: log in");
         assertElementTextEquals(By.id(popupMessageId), ("Username or password incorrect"));
         assertElementTextEquals(By.id("footer-right"), (""));
-
     }
 
     // --------- WHEN LOGGED IN ---------
@@ -197,22 +197,22 @@ public class SolutionIT {
     @Test
     public void loggedIn_checkMenus() {
         logIn(true);
+
         assertElementPresent(myWhipbirdsMenuId);
         assertElementPresent(aboutMenuId);
         assertElementPresent(logOutMenuId);
         assertElementNotPresent(logInMenuId);
-
     }
 
     // Step 6
     @Test
     public void loggedIn_checkCurrentPage() {
         logIn(true);
+
         assertUrlEquals("http://whipbird.mattcalthrop.com/#!/my-whipbirds");
         assertTitleEquals("whipbird: my whipbirds");
         assertElementTextEquals(By.tagName("h4"), ("Current whipbirds for James Chan"));
         assertElementTextEquals(By.id("footer-right"), ("James Chan"));
-
     }
 
     // Step 7
@@ -233,6 +233,9 @@ public class SolutionIT {
     public void loggedIn_addNewWhipbird() {
         logIn(true);
 
+        wait.until(presenceOfElementLocated(By.id("delete-whipbird-button-0")));
+        driver.findElement(By.id("delete-whipbird-button-0")).click();
+
         wait.until(presenceOfElementLocated(By.id("name")));
         driver.findElement(By.id("name")).sendKeys("Jenkins");
 
@@ -243,13 +246,13 @@ public class SolutionIT {
         driver.findElement(By.id("add-new-whipbird-button")).click();
 
         assertElementTextEquals(By.id("global-snackbar"), ("Whipbird added: Jenkins"));
-        assertElementTextEquals(By.id("whipbird-name-2"), ("Jenkins"));
-        assertElementTextEquals(By.id("whipbird-age-2"), ("23"));
+        assertElementTextEquals(By.id("whipbird-name-0"), ("Jenkins"));
+        assertElementTextEquals(By.id("whipbird-age-0"), ("23"));
     }
 
     // Step 9
     @Test
     public void loggedIn_addNewWhipbirdThenDeleteIt() {
-        // TODO
+
     }
 }

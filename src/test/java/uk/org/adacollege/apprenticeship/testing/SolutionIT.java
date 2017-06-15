@@ -261,7 +261,6 @@ public class SolutionIT {
     // Step 9
     @Test
     public void loggedIn_addNewWhipbirdThenDeleteIt() {
-
         logIn(true);
 
         deleteAllBirds();

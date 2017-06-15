@@ -118,6 +118,15 @@ public class SolutionIT {
         assertTrue(result);
     }
 
+    private static void deleteAllBirds() {
+        int number = driver.findElements(By.id("delete-whipbird-button-0")).size();
+            while (number > 0){
+                wait.until(presenceOfElementLocated(By.id("delete-whipbird-button-0")));
+                driver.findElement(By.id("delete-whipbird-button-0")).click();
+                number = driver.findElements(By.id("delete-whipbird-button-0")).size();
+            }
+    }
+
     // ========= SCAFFOLDING =========
 
     @BeforeClass
@@ -233,8 +242,7 @@ public class SolutionIT {
     public void loggedIn_addNewWhipbird() {
         logIn(true);
 
-        wait.until(presenceOfElementLocated(By.id("delete-whipbird-button-0")));
-        driver.findElement(By.id("delete-whipbird-button-0")).click();
+        deleteAllBirds();
 
         wait.until(presenceOfElementLocated(By.id("name")));
         driver.findElement(By.id("name")).sendKeys("Jenkins");
@@ -253,6 +261,8 @@ public class SolutionIT {
     // Step 9
     @Test
     public void loggedIn_addNewWhipbirdThenDeleteIt() {
+
+        
 
     }
 }
